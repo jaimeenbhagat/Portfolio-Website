@@ -79,48 +79,41 @@
         <div class="section">
           <h1>Hi, I am <br />Jaimeen Bhagat.</h1>
           <div class="typewriter-container">
-            <span>I am a  </span><span id="typewriter"></span>
+            <span>I am a </span><span id="typewriter"></span>
           </div>
 
-		<script>
+          <script>
             function sleep(ms) {
               return new Promise((resolve) => setTimeout(resolve, ms));
             }
 
-            const phrases = ["Coder", "Front End Developer", "Python Developer"];
+            const phrases = [
+              "Coder",
+              "Front End Developer",
+              "Python Developer",
+            ];
             const el = document.getElementById("typewriter");
-
-            let sleepTime = 100;
 
             let curPhraseIndex = 0;
 
-            const writeLoop = async () => {
+            const slideLoop = async () => {
               while (true) {
-                let curWord = phrases[curPhraseIndex];
+                el.style.transition = "transform 0.5s, opacity 0.5s";
+                el.style.opacity = 0;
+                el.style.transform = "translateX(-100%)"; // Slide out
 
-                for (let i = 0; i < curWord.length; i++) {
-                  el.innerText = curWord.substring(0, i + 1);
-                  await sleep(sleepTime);
-                }
+                await sleep(500);
 
-                await sleep(sleepTime * 10);
+                el.innerText = phrases[curPhraseIndex];
+                curPhraseIndex = (curPhraseIndex + 1) % phrases.length;
 
-                for (let i = curWord.length; i > 0; i--) {
-                  el.innerText = curWord.substring(0, i - 1);
-                  await sleep(sleepTime);
-                }
-
-                await sleep(sleepTime * 5);
-
-                if (curPhraseIndex === phrases.length - 1) {
-                  curPhraseIndex = 0;
-                } else {
-                  curPhraseIndex++;
-                }
+                el.style.opacity = 1;
+                el.style.transform = "translateX(0)"; // Slide in
+                await sleep(2000);
               }
             };
 
-            writeLoop();
+            slideLoop();
           </script>
           <p>
             A Second Year Engineering student at SVKM’s Dwarkadas J. Sanghvi
@@ -146,7 +139,7 @@
         </div>
         <div class="image-holder">
           <div id="myPic">
-            <img src="images/jaimeen-bhagat.jpg" alt="Jaimeen Bhagat Image" />
+            <img src="images/jaimeen-bhagat.jpeg" alt="Jaimeen Bhagat Image" />
           </div>
         </div>
       </div>

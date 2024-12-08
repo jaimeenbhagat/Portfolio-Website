@@ -12,8 +12,8 @@
   margin: 0px;
 
   /* ---- Color Styles ---- */
-  --Background: #9000ff;
-  --Sky-Blue: #ff7b46;
+  --Background: linear-gradient(to bottom, #b3dced 0%,#29b8e5 50%,#bce0ee 100%);
+  --Sky-Blue: #ffacac;
   --Dark-Grey: #000000;
   --Blue-White: #bad7e3;
   --White: #ffffff;
@@ -199,7 +199,7 @@ nav {
 .typewriter-container {
   font-family: 'Courier New', Courier, monospace;
   font-size: 24px;
-  color: #62b4d8; /* Adjust for your theme */
+  color: var(--Sky-Blue); /* Adjust for your theme */
   display: inline;
   white-space: nowrap;
   overflow: hidden;
@@ -208,7 +208,7 @@ nav {
 }
 
 #typewriter {
-  color: #0072ef;
+  color: var(--Sky-Blue);
   font-weight: bold;
 }
 
